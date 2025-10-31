@@ -24,29 +24,34 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(248, 250, 252, 0.98);
+            backdrop-filter: blur(15px);
             padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
             z-index: 1000;
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
         }
 
         .nav a {
-            color: #667eea;
+            color: #2d3748;
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 10px 18px;
+            border-radius: 8px;
             transition: all 0.3s;
-            font-weight: 500;
+            font-weight: 600;
+            border: 1px solid transparent;
         }
 
         .nav a:hover {
             background: #667eea;
             color: white;
+            border-color: #667eea;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
         .hero {
@@ -728,46 +733,10 @@
             <div class="highlight-box">
                 <h3>💡 Dato Clave</h3>
                 <p style="font-size: 1.2em;">
-                    Las empresas turísticas con planeación estratégica registran <strong>mayores niveles de
-                        ocupación</strong>,
+                    Las empresas con planeación estratégica registran
                     <strong>incrementos en ingresos</strong> y <strong>mejor fidelización de clientes</strong> que
                     aquellas sin planificación.
                 </p>
-            </div>
-
-            <div class="cycle">
-                <div class="cycle-item">
-                    <div class="number">1</div>
-                    <strong>Identidad</strong>
-                </div>
-                <div class="cycle-item">
-                    <div class="number">2</div>
-                    <strong>Análisis</strong>
-                </div>
-                <div class="cycle-item">
-                    <div class="number">3</div>
-                    <strong>Objetivos</strong>
-                </div>
-                <div class="cycle-item">
-                    <div class="number">4</div>
-                    <strong>Estrategias</strong>
-                </div>
-                <div class="cycle-item">
-                    <div class="number">5</div>
-                    <strong>Acción</strong>
-                </div>
-                <div class="cycle-item">
-                    <div class="number">6</div>
-                    <strong>Presupuesto</strong>
-                </div>
-                <div class="cycle-item">
-                    <div class="number">7</div>
-                    <strong>Implementación</strong>
-                </div>
-                <div class="cycle-item">
-                    <div class="number">8</div>
-                    <strong>Seguimiento</strong>
-                </div>
             </div>
         </section>
 
@@ -836,7 +805,6 @@
                         <li>Solo 48 km de Manizales</li>
                         <li>Cultura cafetera auténtica</li>
                         <li>Clima agradable (20°C promedio)</li>
-                        <li>Temporada de cometas (agosto)</li>
                     </ul>
                 </div>
 
@@ -877,15 +845,6 @@
                 </div>
             </div>
 
-            <div class="highlight-box">
-                <h3>🔄 Cruce Estratégico FODA</h3>
-                <p style="font-size: 1.1em; line-height: 1.8;">
-                    <strong>Ofensivas (F+O):</strong> Usar fortalezas para aprovechar oportunidades<br>
-                    <strong>Defensivas (F+A):</strong> Usar fortalezas para protegerse de amenazas<br>
-                    <strong>Reorientación (D+O):</strong> Superar debilidades aprovechando oportunidades<br>
-                    <strong>Supervivencia (D+A):</strong> Minimizar debilidades y evitar amenazas
-                </p>
-            </div>
         </section>
 
         <section class="section" id="objetivos">
@@ -956,80 +915,16 @@
         <section class="section" id="estrategias">
             <h2 class="section-title">Elemento 4: Diseño de Estrategias</h2>
             <p class="section-subtitle">Los caminos que seguirás para alcanzar tus objetivos</p>
-
-            <div class="strategy-grid">
-                <div class="strategy-card">
-                    <h4>📱 Marketing y Comunicación</h4>
-                    <p>Desarrolla presencia digital fuerte:</p>
-                    <ul style="margin-top: 15px; line-height: 1.8;">
-                        <li>Marca turística clara y diferenciada</li>
-                        <li>Sitio web atractivo con SEO</li>
-                        <li>Contenido visual en redes sociales</li>
-                        <li>Colaboración con influencers regionales</li>
-                        <li>Marketing de contenidos auténtico</li>
-                    </ul>
-                </div>
-
-                <div class="strategy-card">
-                    <h4>🤝 Alianzas y Asociaciones</h4>
-                    <p>Fortalece la red de colaboración:</p>
-                    <ul style="margin-top: 15px; line-height: 1.8;">
-                        <li>Hoteles y hostales de la región</li>
-                        <li>Restaurantes locales</li>
-                        <li>Operadores turísticos del Eje Cafetero</li>
-                        <li>Agencias de viajes especializadas</li>
-                        <li>Comunidades y asociaciones locales</li>
-                    </ul>
-                </div>
-
-                <div class="strategy-card">
-                    <h4>🎨 Diversificación de Productos</h4>
-                    <p>Crea experiencias para todos:</p>
-                    <ul style="margin-top: 15px; line-height: 1.8;">
-                        <li>Turismo de aventura (parapente, caminatas)</li>
-                        <li>Turismo contemplativo (miradores, fotografía)</li>
-                        <li>Turismo cultural (fiestas, gastronomía)</li>
-                        <li>Turismo religioso (peregrinaciones)</li>
-                        <li>Turismo familiar (todas las edades)</li>
-                    </ul>
-                </div>
-
-                <div class="strategy-card">
-                    <h4>📅 Desestacionalización</h4>
-                    <p>Mantén actividad todo el año:</p>
-                    <ul style="margin-top: 15px; line-height: 1.8;">
-                        <li>Paquetes especiales temporada baja</li>
-                        <li>Atractivos independientes del clima</li>
-                        <li>Alianzas con instituciones educativas</li>
-                        <li>Eventos culturales programados</li>
-                        <li>Promociones estratégicas mensuales</li>
-                    </ul>
-                </div>
-
-                <div class="strategy-card">
-                    <h4>⭐ Calidad y Satisfacción</h4>
-                    <p>Excelencia en cada interacción:</p>
-                    <ul style="margin-top: 15px; line-height: 1.8;">
-                        <li>Capacitación continua del personal</li>
-                        <li>Sistemas de retroalimentación activos</li>
-                        <li>Protocolos de servicio estandarizados</li>
-                        <li>Programas de fidelización</li>
-                        <li>Mejora continua basada en datos</li>
-                    </ul>
-                </div>
-
-                <div class="strategy-card">
-                    <h4>🌱 Sostenibilidad</h4>
-                    <p>Turismo responsable y consciente:</p>
-                    <ul style="margin-top: 15px; line-height: 1.8;">
-                        <li>Prácticas ambientales certificadas</li>
-                        <li>Respeto por comunidades locales</li>
-                        <li>Conservación de atractivos naturales</li>
-                        <li>Educación ambiental a visitantes</li>
-                        <li>Cadena de valor local y justa</li>
-                    </ul>
-                </div>
+            <div class="highlight-box">
+                <h3>🔄 Cruce Estratégico FODA</h3>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    <strong>Ofensivas (F+O):</strong> Usar fortalezas para aprovechar oportunidades<br>
+                    <strong>Defensivas (F+A):</strong> Usar fortalezas para protegerse de amenazas<br>
+                    <strong>Reorientación (D+O):</strong> Superar debilidades aprovechando oportunidades<br>
+                    <strong>Supervivencia (D+A):</strong> Minimizar debilidades y evitar amenazas
+                </p>
             </div>
+
         </section>
 
         <section class="section" id="accion">
@@ -1235,35 +1130,6 @@
                     </p>
                 </div>
             </div>
-
-            <div class="example-box">
-                <h4>⚠️ Superando Obstáculos Comunes</h4>
-
-                <div
-                    style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px; margin-bottom: 15px;">
-                    <strong style="color: #667eea;">🔧 Recursos Limitados</strong>
-                    <p style="margin-top: 10px;">Priorizar acciones de mayor impacto, buscar alianzas para compartir
-                        costos, avanzar por fases.</p>
-                </div>
-
-                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
-                    <strong style="color: #667eea;">🚧 Resistencia al Cambio</strong>
-                    <p style="margin-top: 10px;">Involucrar al equipo desde la planeación, explicar beneficios
-                        claramente, capacitar en nuevas formas de trabajo.</p>
-                </div>
-
-                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
-                    <strong style="color: #667eea;">📚 Falta de Conocimiento</strong>
-                    <p style="margin-top: 10px;">Buscar apoyo en Cámara de Comercio, Gobernación de Caldas, MinCIT,
-                        cursos SENA sobre turismo.</p>
-                </div>
-
-                <div style="background: white; padding: 20px; border-radius: 10px;">
-                    <strong style="color: #667eea;">🏆 Competencia Intensa</strong>
-                    <p style="margin-top: 10px;">Diferenciarse con autenticidad, servicio personalizado y conocimiento
-                        profundo del territorio.</p>
-                </div>
-            </div>
         </section>
 
         <section class="section" id="seguimiento">
@@ -1310,92 +1176,52 @@
                         <li>Tráfico web y conversión</li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>📅 Seguimiento Semanal</h3>
-                        <p>Revisar indicadores operativos básicos: reservas, consultas, servicios prestados. Detectar
-                            problemas rápidamente.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>📊 Seguimiento Mensual</h3>
-                        <p>Reunión formal del equipo. Revisar todos los KPIs, analizar cumplimiento del plan,
-                            identificar desviaciones, ajustar siguiente mes.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>🎯 Seguimiento Trimestral</h3>
-                        <p>Evaluación profunda de avance hacia objetivos SMART. Análisis de efectividad de estrategias.
-                            Revisión de presupuesto real vs. proyectado.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>🏆 Seguimiento Anual</h3>
-                        <p>Evaluación completa del plan. Medición de logro de objetivos anuales. Actualización FODA.
-                            Definición de objetivos año siguiente.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="highlight-box">
-                <h3>🔄 Ciclo de Mejora Continua</h3>
-                <p style="font-size: 1.1em; line-height: 1.8;">
-                    El seguimiento no es solo para medir, sino principalmente para <strong>aprender y mejorar</strong>.
-                    Cuando algo no funciona: analiza por qué, ajusta la estrategia, implementa mejoras y vuelve a medir.
-                    Este ciclo transforma la planeación en un <strong>proceso vivo</strong> de crecimiento constante.
-                </p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">🌟 Contexto: Filadelfia, Caldas</h2>
-            <p class="section-subtitle">Un municipio con enorme potencial turístico por desarrollar</p>
-
-            <div class="cards">
-                <div class="card">
-                    <div class="card-icon">🏔️</div>
-                    <h3>Atractivos Naturales</h3>
+                <div class="kpi-card">
+                    <h4>⚙️ Indicadores Operativos</h4>
                     <ul>
-                        <li>Cerro de las Cruces</li>
-                        <li>Cerro Corazón de Jesús</li>
-                        <li>Los Chorros de Gregorito</li>
-                        <li>Quebradas y miradores</li>
-                        <li>Paisaje cafetero auténtico</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🎭</div>
-                    <h3>Cultura y Tradiciones</h3>
-                    <ul>
-                        <li>Temporada de cometas (agosto)</li>
-                        <li>Cultura cafetera viva</li>
-                        <li>Gastronomía local</li>
-                        <li>Fiestas tradicionales</li>
-                        <li>Comunidad acogedora</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📍</div>
-                    <h3>Ubicación Estratégica</h3>
-                    <ul>
-                        <li>48 km de Manizales</li>
-                        <li>Cerca del Eje Cafetero</li>
-                        <li>Acceso desde ciudades principales</li>
-                        <li>Clima agradable (20°C)</li>
-                        <li>Destino de día o fin de semana</li>
+                        <li>Porcentaje de ocupación de los servicios turísticos disponibles</li>
+                        <li>Días de operación vs. días disponibles</li>
+                        <li>Eficiencia del equipo (turistas atendidos por guía/día)</li>
                     </ul>
                 </div>
             </div>
-        </section>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>📅 Seguimiento Semanal</h3>
+                <p>Revisar indicadores operativos básicos: reservas, consultas, servicios prestados. Detectar
+                    problemas rápidamente.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>📊 Seguimiento Mensual</h3>
+                <p>Reunión formal del equipo. Revisar todos los KPIs, analizar cumplimiento del plan,
+                    identificar desviaciones, ajustar siguiente mes.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>🎯 Seguimiento Trimestral</h3>
+                <p>Evaluación profunda de avance hacia objetivos SMART. Análisis de efectividad de estrategias.
+                    Revisión de presupuesto real vs. proyectado.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>🏆 Seguimiento Anual</h3>
+                <p>Evaluación completa del plan. Medición de logro de objetivos anuales. Actualización FODA.
+                    Definición de objetivos año siguiente.</p>
+            </div>
+        </div>
+    </div>
+
+    </section>
     </div>
 
     <div class="cta">
