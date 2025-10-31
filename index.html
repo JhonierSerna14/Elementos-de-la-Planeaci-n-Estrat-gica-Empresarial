@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planeación Estratégica Turística</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero p {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1em;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            padding: 80px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s forwards;
+        }
+        
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .card ul {
+            margin-top: 15px;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .cycle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .cycle-item {
+            background: white;
+            padding: 30px;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .cycle-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .cycle-item .number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .smart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .smart-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .smart-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .smart-item h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .foda-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .foda-item {
+            padding: 40px;
+            border-radius: 10px;
+            min-height: 200px;
+        }
+        
+        .foda-item h4 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .fortalezas {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .oportunidades {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .debilidades {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+        
+        .amenazas {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            width: 45%;
+            transition: transform 0.3s;
+        }
+        
+        .timeline-content:hover {
+            transform: scale(1.05);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .strategy-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+            transition: all 0.3s;
+        }
+        
+        .strategy-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .strategy-card h4 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .example-box h4 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .benefit-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+        
+        .benefit-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+        }
+        
+        .benefit-icon {
+            font-size: 2em;
+            min-width: 50px;
+        }
+        
+        .budget-table {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .budget-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .budget-table th,
+        .budget-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .budget-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .budget-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 60px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .step::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #667eea;
+        }
+        
+        .step:last-child::after {
+            content: '';
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .cta button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .cta button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .kpi-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid #667eea;
+        }
+        
+        .kpi-card h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-card ul {
+            padding-left: 20px;
+            line-height: 2;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+            
+            .foda-matrix {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: 80%;
+                margin-left: 60px !important;
+            }
+            
+            .cycle-item {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .strategy-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .step::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -30px;
+                transform: translateX(50%);
+            }
+            
+            .nav {
+                font-size: 0.9em;
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#definicion">Definición</a>
+        <a href="#identidad">Identidad</a>
+        <a href="#analisis">Análisis</a>
+        <a href="#objetivos">Objetivos</a>
+        <a href="#estrategias">Estrategias</a>
+        <a href="#accion">Plan de Acción</a>
+        <a href="#presupuesto">Presupuesto</a>
+        <a href="#seguimiento">Seguimiento</a>
+    </nav>
+
+    <div class="hero" id="inicio">
+        <h1>🗺️ Planeación Estratégica Empresarial</h1>
+        <p class="hero-subtitle">Convierte tus ideas en realidad y lleva tu negocio al siguiente nivel</p>
+    </div>
+
+    <div class="container">
+        <section class="section" id="definicion">
+            <h2 class="section-title">¿Qué es la Planeación Estratégica?</h2>
+            <p class="section-subtitle">
+                Un proceso sistemático que define <span class="highlight">qué quieres conseguir</span> 
+                y <span class="highlight">cómo lo vas a lograr</span> mediante recursos, procedimientos y acciones concretas.
+            </p>
+            
+            <div class="benefit-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div>
+                        <strong>Claridad en objetivos</strong>
+                        <p>Define metas específicas y alcanzables</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🧠</div>
+                    <div>
+                        <strong>Mejor toma de decisiones</strong>
+                        <p>Base sólida para elegir el mejor camino</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">👥</div>
+                    <div>
+                        <strong>Alineación del equipo</strong>
+                        <p>Todos trabajando hacia el mismo propósito</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔍</div>
+                    <div>
+                        <strong>Identifica oportunidades</strong>
+                        <p>Detecta ventajas competitivas y amenazas</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <div>
+                        <strong>Mejora el desempeño</strong>
+                        <p>Resultados medibles y sostenibles</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🌱</div>
+                    <div>
+                        <strong>Crecimiento ordenado</strong>
+                        <p>Expansión planificada y sostenible</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>💡 Dato Clave</h3>
+                <p style="font-size: 1.2em;">
+                    Las empresas turísticas con planeación estratégica registran <strong>mayores niveles de ocupación</strong>, 
+                    <strong>incrementos en ingresos</strong> y <strong>mejor fidelización de clientes</strong> que aquellas sin planificación.
+                </p>
+            </div>
+            
+            <div class="cycle">
+                <div class="cycle-item">
+                    <div class="number">1</div>
+                    <strong>Identidad</strong>
+                </div>
+                <div class="cycle-item">
+                    <div class="number">2</div>
+                    <strong>Análisis</strong>
+                </div>
+                <div class="cycle-item">
+                    <div class="number">3</div>
+                    <strong>Objetivos</strong>
+                </div>
+                <div class="cycle-item">
+                    <div class="number">4</div>
+                    <strong>Estrategias</strong>
+                </div>
+                <div class="cycle-item">
+                    <div class="number">5</div>
+                    <strong>Acción</strong>
+                </div>
+                <div class="cycle-item">
+                    <div class="number">6</div>
+                    <strong>Presupuesto</strong>
+                </div>
+                <div class="cycle-item">
+                    <div class="number">7</div>
+                    <strong>Implementación</strong>
+                </div>
+                <div class="cycle-item">
+                    <div class="number">8</div>
+                    <strong>Seguimiento</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="identidad">
+            <h2 class="section-title">Elemento 1: Identidad Corporativa</h2>
+            <p class="section-subtitle">El fundamento sobre el cual se construye toda la estrategia empresarial</p>
+            
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">🧭</div>
+                    <h3>Misión - ¿Quiénes somos?</h3>
+                    <p>La razón de ser de tu empresa</p>
+                    <ul>
+                        <li>¿Qué hacemos?</li>
+                        <li>¿Para quién lo hacemos?</li>
+                        <li>¿Cómo lo hacemos?</li>
+                        <li>¿Qué valor aportamos?</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔭</div>
+                    <h3>Visión - ¿A dónde vamos?</h3>
+                    <p>Tu proyección a 3-5 años</p>
+                    <ul>
+                        <li>Ambiciosa pero alcanzable</li>
+                        <li>Motivadora para el equipo</li>
+                        <li>Orientadora de decisiones</li>
+                        <li>Cuantificable y medible</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💎</div>
+                    <h3>Valores - ¿Cómo trabajamos?</h3>
+                    <p>Principios éticos permanentes</p>
+                    <ul>
+                        <li>Respeto por la naturaleza</li>
+                        <li>Compromiso comunitario</li>
+                        <li>Calidad en el servicio</li>
+                        <li>Honestidad y transparencia</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🔄 Cruce Estratégico FODA</h3>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    <strong>Ofensivas (F+O):</strong> Usar fortalezas para aprovechar oportunidades<br>
+                    <strong>Defensivas (F+A):</strong> Usar fortalezas para protegerse de amenazas<br>
+                    <strong>Reorientación (D+O):</strong> Superar debilidades aprovechando oportunidades<br>
+                    <strong>Supervivencia (D+A):</strong> Minimizar debilidades y evitar amenazas
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="objetivos">
+            <h2 class="section-title">Elemento 3: Objetivos SMART</h2>
+            <p class="section-subtitle">Metas específicas que transforman la estrategia en resultados medibles</p>
+            
+            <div class="smart-grid">
+                <div class="smart-item">
+                    <h4>S</h4>
+                    <p><strong>Específico</strong></p>
+                    <p>Claro y preciso sobre lo que quieres lograr</p>
+                </div>
+                <div class="smart-item">
+                    <h4>M</h4>
+                    <p><strong>Medible</strong></p>
+                    <p>Cuantificable con indicadores concretos</p>
+                </div>
+                <div class="smart-item">
+                    <h4>A</h4>
+                    <p><strong>Alcanzable</strong></p>
+                    <p>Realista con tus recursos y capacidades</p>
+                </div>
+                <div class="smart-item">
+                    <h4>R</h4>
+                    <p><strong>Relevante</strong></p>
+                    <p>Alineado con misión y visión empresarial</p>
+                </div>
+                <div class="smart-item">
+                    <h4>T</h4>
+                    <p><strong>Tiempo</strong></p>
+                    <p>Con fecha límite clara de cumplimiento</p>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <h4>📝 Ejemplos de Objetivos SMART para Filadelfia</h4>
+                
+                <div style="margin-top: 25px; background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px;">
+                    <strong style="color: #667eea; font-size: 1.1em;">Objetivo 1: Incremento de Visitantes</strong>
+                    <p style="margin-top: 10px; line-height: 1.8;">
+                        "Incrementar en <strong>30%</strong> el número de turistas que visitan el Cerro de las Cruces 
+                        durante los próximos <strong>12 meses</strong> (octubre 2025 - septiembre 2026), mediante estrategias 
+                        de marketing digital y alianzas con hoteles de Manizales."
+                    </p>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px;">
+                    <strong style="color: #667eea; font-size: 1.1em;">Objetivo 2: Satisfacción del Cliente</strong>
+                    <p style="margin-top: 10px; line-height: 1.8;">
+                        "Lograr que el <strong>80%</strong> de los turistas califiquen su experiencia como excelente 
+                        (4.5/5 o superior) para <strong>junio de 2026</strong>, mediante capacitación del equipo 
+                        y mejora de servicios."
+                    </p>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px;">
+                    <strong style="color: #667eea; font-size: 1.1em;">Objetivo 3: Alianzas Estratégicas</strong>
+                    <p style="margin-top: 10px; line-height: 1.8;">
+                        "Establecer <strong>5 alianzas comerciales</strong> formalizadas con hoteles de Manizales 
+                        antes de <strong>marzo de 2026</strong>, para asegurar flujo constante de referidos."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="estrategias">
+            <h2 class="section-title">Elemento 4: Diseño de Estrategias</h2>
+            <p class="section-subtitle">Los caminos que seguirás para alcanzar tus objetivos</p>
+            
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h4>📱 Marketing y Comunicación</h4>
+                    <p>Desarrolla presencia digital fuerte:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Marca turística clara y diferenciada</li>
+                        <li>Sitio web atractivo con SEO</li>
+                        <li>Contenido visual en redes sociales</li>
+                        <li>Colaboración con influencers regionales</li>
+                        <li>Marketing de contenidos auténtico</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h4>🤝 Alianzas y Asociaciones</h4>
+                    <p>Fortalece la red de colaboración:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Hoteles y hostales de la región</li>
+                        <li>Restaurantes locales</li>
+                        <li>Operadores turísticos del Eje Cafetero</li>
+                        <li>Agencias de viajes especializadas</li>
+                        <li>Comunidades y asociaciones locales</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h4>🎨 Diversificación de Productos</h4>
+                    <p>Crea experiencias para todos:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Turismo de aventura (parapente, caminatas)</li>
+                        <li>Turismo contemplativo (miradores, fotografía)</li>
+                        <li>Turismo cultural (fiestas, gastronomía)</li>
+                        <li>Turismo religioso (peregrinaciones)</li>
+                        <li>Turismo familiar (todas las edades)</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h4>📅 Desestacionalización</h4>
+                    <p>Mantén actividad todo el año:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Paquetes especiales temporada baja</li>
+                        <li>Atractivos independientes del clima</li>
+                        <li>Alianzas con instituciones educativas</li>
+                        <li>Eventos culturales programados</li>
+                        <li>Promociones estratégicas mensuales</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h4>⭐ Calidad y Satisfacción</h4>
+                    <p>Excelencia en cada interacción:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Capacitación continua del personal</li>
+                        <li>Sistemas de retroalimentación activos</li>
+                        <li>Protocolos de servicio estandarizados</li>
+                        <li>Programas de fidelización</li>
+                        <li>Mejora continua basada en datos</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h4>🌱 Sostenibilidad</h4>
+                    <p>Turismo responsable y consciente:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Prácticas ambientales certificadas</li>
+                        <li>Respeto por comunidades locales</li>
+                        <li>Conservación de atractivos naturales</li>
+                        <li>Educación ambiental a visitantes</li>
+                        <li>Cadena de valor local y justa</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="accion">
+            <h2 class="section-title">Elemento 5: Plan de Acción</h2>
+            <p class="section-subtitle">De la estrategia a la ejecución: tareas específicas, responsables y tiempos</p>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Acciones Concretas</h4>
+                    <p>Tareas específicas paso a paso</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Responsables</h4>
+                    <p>Quién ejecuta cada tarea</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Recursos</h4>
+                    <p>Dinero, tiempo, materiales</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Cronograma</h4>
+                    <p>Fechas inicio y fin</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Prioridades</h4>
+                    <p>Alta, media, baja</p>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <h4>📝 Ejemplo: Plan de Acción Marketing Digital</h4>
+                <p style="margin-bottom: 20px;"><strong>Objetivo:</strong> Incrementar 30% visitas al Cerro de las Cruces en 12 meses</p>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <strong style="color: #667eea;">Semana 1 (Nov 2025):</strong>
+                    <p>✓ Crear perfiles en Instagram y Facebook</p>
+                    <p>👤 Responsable: Gerente | ⏱️ Tiempo: 3 horas | 🔴 Prioridad: Alta</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <strong style="color: #667eea;">Semanas 2-4 (Nov 2025):</strong>
+                    <p>✓ Sesión fotográfica profesional de atractivos</p>
+                    <p>👤 Responsable: Fotógrafo externo | 💰 Recursos: $300.000 | 🔴 Prioridad: Alta</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <strong style="color: #667eea;">Mes 2 (Dic 2025):</strong>
+                    <p>✓ Publicar 3 posts semanales + inversión en publicidad</p>
+                    <p>👤 Responsable: Asistente marketing | 💰 Recursos: $200.000/mes | 🔴 Prioridad: Alta</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px;">
+                    <strong style="color: #667eea;">Mes 3 (Ene 2026):</strong>
+                    <p>✓ Colaborar con 3 influencers regionales</p>
+                    <p>👤 Responsable: Gerente | 💰 Recursos: Tours gratuitos | 🟡 Prioridad: Media</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="presupuesto">
+            <h2 class="section-title">Elemento 6: Presupuesto</h2>
+            <p class="section-subtitle">Cuantificación económica para hacer viable tu plan estratégico</p>
+            
+            <div class="budget-table">
+                <h3 style="color: #667eea; margin-bottom: 25px;">💰 Presupuesto Anual Ejemplo</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Inversión</th>
+                            <th>Período</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>INVERSIONES INICIALES</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Marketing digital y redes sociales</td>
+                            <td>$600.000</td>
+                            <td>Meses 1-3</td>
+                        </tr>
+                        <tr>
+                            <td>Capacitación del equipo</td>
+                            <td>$400.000</td>
+                            <td>Meses 1-3</td>
+                        </tr>
+                        <tr>
+                            <td>Señalización básica</td>
+                            <td>$800.000</td>
+                            <td>Meses 1-3</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subtotal Inicial</strong></td>
+                            <td><strong>$1.800.000</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="height: 20px;"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>COSTOS MENSUALES</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Publicidad digital</td>
+                            <td>$200.000</td>
+                            <td>Mensual</td>
+                        </tr>
+                        <tr>
+                            <td>Personal adicional</td>
+                            <td>$700.000</td>
+                            <td>Mensual</td>
+                        </tr>
+                        <tr>
+                            <td>Mantenimiento y operación</td>
+                            <td>$300.000</td>
+                            <td>Mensual</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subtotal Mensual</strong></td>
+                            <td><strong>$1.200.000</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="height: 20px;"></td>
+                        </tr>
+                        <tr style="background: #667eea; color: white;">
+                            <td><strong>INVERSIÓN TOTAL ANUAL</strong></td>
+                            <td><strong>$16.200.000</strong></td>
+                            <td>12 meses</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">$5M</div>
+                    <p>Ingresos mensuales actuales</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$6M</div>
+                    <p>Ingresos proyectados/mes</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$72M</div>
+                    <p>Ingresos anuales esperados</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">+30%</div>
+                    <p>Crecimiento proyectado</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>📊 Análisis de Viabilidad</h3>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    Con una inversión de <strong>$16.2 millones</strong> se espera generar un incremento de 
+                    <strong>$12 millones</strong> en el primer año. Aunque la recuperación es gradual, 
+                    el posicionamiento de marca y la base de clientes construida generan valor a largo plazo.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Elemento 7: Implementación</h2>
+            <p class="section-subtitle">Pasar del papel a la acción: el momento más crítico</p>
+            
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">📢</div>
+                    <h3>Comunicación Efectiva</h3>
+                    <p>Todo el equipo debe conocer el plan, no solo directivos. Reunión de lanzamiento explicando misión, visión y objetivos.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Responsabilidades Claras</h3>
+                    <p>Cada acción con un responsable específico. Evitar responsabilidades difusas donde "todos" son responsables.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💪</div>
+                    <h3>Disciplina y Constancia</h3>
+                    <p>Seguir el plan día a día, incluso cuando surjan emergencias. La disciplina separa el éxito del fracaso.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎉</div>
+                    <h3>Motivación Continua</h3>
+                    <p>Celebrar logros, reconocer esfuerzos y recordar la visión mantiene alta la motivación del equipo.</p>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <h4>⚠️ Superando Obstáculos Comunes</h4>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px; margin-bottom: 15px;">
+                    <strong style="color: #667eea;">🔧 Recursos Limitados</strong>
+                    <p style="margin-top: 10px;">Priorizar acciones de mayor impacto, buscar alianzas para compartir costos, avanzar por fases.</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <strong style="color: #667eea;">🚧 Resistencia al Cambio</strong>
+                    <p style="margin-top: 10px;">Involucrar al equipo desde la planeación, explicar beneficios claramente, capacitar en nuevas formas de trabajo.</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <strong style="color: #667eea;">📚 Falta de Conocimiento</strong>
+                    <p style="margin-top: 10px;">Buscar apoyo en Cámara de Comercio, Gobernación de Caldas, MinCIT, cursos SENA sobre turismo.</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px;">
+                    <strong style="color: #667eea;">🏆 Competencia Intensa</strong>
+                    <p style="margin-top: 10px;">Diferenciarse con autenticidad, servicio personalizado y conocimiento profundo del territorio.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="seguimiento">
+            <h2 class="section-title">Elemento 8: Seguimiento y Control</h2>
+            <p class="section-subtitle">Medir, evaluar y ajustar constantemente para garantizar el éxito</p>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h4>📊 Indicadores de Demanda</h4>
+                    <ul>
+                        <li>Número de turistas/mes</li>
+                        <li>Tasa de crecimiento</li>
+                        <li>Distribución por segmento</li>
+                        <li>Análisis de estacionalidad</li>
+                    </ul>
+                </div>
+                
+                <div class="kpi-card">
+                    <h4>💰 Indicadores Económicos</h4>
+                    <ul>
+                        <li>Ingresos mensuales</li>
+                        <li>Ingreso promedio/turista</li>
+                        <li>Tasa de conversión</li>
+                        <li>Relación costo-beneficio</li>
+                    </ul>
+                </div>
+                
+                <div class="kpi-card">
+                    <h4>⭐ Indicadores de Calidad</h4>
+                    <ul>
+                        <li>Satisfacción del cliente</li>
+                        <li>% experiencias excelentes</li>
+                        <li>Tasa de quejas</li>
+                        <li>Net Promoter Score</li>
+                    </ul>
+                </div>
+                
+                <div class="kpi-card">
+                    <h4>📱 Indicadores Marketing</h4>
+                    <ul>
+                        <li>Seguidores en redes</li>
+                        <li>Alcance e interacciones</li>
+                        <li>Alianzas comerciales activas</li>
+                        <li>Tráfico web y conversión</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>📅 Seguimiento Semanal</h3>
+                        <p>Revisar indicadores operativos básicos: reservas, consultas, servicios prestados. Detectar problemas rápidamente.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>📊 Seguimiento Mensual</h3>
+                        <p>Reunión formal del equipo. Revisar todos los KPIs, analizar cumplimiento del plan, identificar desviaciones, ajustar siguiente mes.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>🎯 Seguimiento Trimestral</h3>
+                        <p>Evaluación profunda de avance hacia objetivos SMART. Análisis de efectividad de estrategias. Revisión de presupuesto real vs. proyectado.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>🏆 Seguimiento Anual</h3>
+                        <p>Evaluación completa del plan. Medición de logro de objetivos anuales. Actualización FODA. Definición de objetivos año siguiente.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🔄 Ciclo de Mejora Continua</h3>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    El seguimiento no es solo para medir, sino principalmente para <strong>aprender y mejorar</strong>. 
+                    Cuando algo no funciona: analiza por qué, ajusta la estrategia, implementa mejoras y vuelve a medir. 
+                    Este ciclo transforma la planeación en un <strong>proceso vivo</strong> de crecimiento constante.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌟 Contexto: Filadelfia, Caldas</h2>
+            <p class="section-subtitle">Un municipio con enorme potencial turístico por desarrollar</p>
+            
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">🏔️</div>
+                    <h3>Atractivos Naturales</h3>
+                    <ul>
+                        <li>Cerro de las Cruces</li>
+                        <li>Cerro Corazón de Jesús</li>
+                        <li>Los Chorros de Gregorito</li>
+                        <li>Quebradas y miradores</li>
+                        <li>Paisaje cafetero auténtico</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎭</div>
+                    <h3>Cultura y Tradiciones</h3>
+                    <ul>
+                        <li>Temporada de cometas (agosto)</li>
+                        <li>Cultura cafetera viva</li>
+                        <li>Gastronomía local</li>
+                        <li>Fiestas tradicionales</li>
+                        <li>Comunidad acogedora</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📍</div>
+                    <h3>Ubicación Estratégica</h3>
+                    <ul>
+                        <li>48 km de Manizales</li>
+                        <li>Cerca del Eje Cafetero</li>
+                        <li>Acceso desde ciudades principales</li>
+                        <li>Clima agradable (20°C)</li>
+                        <li>Destino de día o fin de semana</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="cta">
+        <h2>🚀 ¿Listo para transformar tu negocio turístico?</h2>
+        <p style="font-size: 1.2em; margin-top: 20px;">
+            La planeación estratégica no es un documento estático, es una <strong>herramienta viva</strong> 
+            que convierte ideas en realidad y permite que tu negocio crezca de manera ordenada y sostenible.
+        </p>
+        <p style="font-size: 1.1em; margin-top: 20px; opacity: 0.95;">
+            Comienza hoy: define tu identidad, analiza tu situación, establece objetivos SMART, 
+            diseña estrategias, crea tu plan de acción y mide constantemente tus resultados.
+        </p>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            Volver al Inicio
+        </button>
+    </div>
+
+    <script>
+        // Animación de scroll para las secciones
+        const sections = document.querySelectorAll('.section');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Smooth scroll para navegación
+        document.querySelectorAll('.nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+            
+            <div class="example-box">
+                <h4>📝 Ejemplo para Filadelfia</h4>
+                <p style="margin-bottom: 15px;"><strong>Misión:</strong> "Brindar experiencias turísticas auténticas que conecten a los visitantes con la riqueza natural y cultural de Filadelfia, generando bienestar para nuestra comunidad y conservación de nuestro patrimonio."</p>
+                <p><strong>Visión:</strong> "Para el año 2028, ser reconocidos como el destino líder en turismo de naturaleza y aventura del occidente caldense, atrayendo 5.000 visitantes anuales con prácticas sostenibles."</p>
+            </div>
+        </section>
+
+        <section class="section" id="analisis">
+            <h2 class="section-title">Elemento 2: Análisis Estratégico</h2>
+            <p class="section-subtitle">Diagnóstico profundo interno y externo para identificar la situación real</p>
+            
+            <div class="foda-matrix">
+                <div class="foda-item fortalezas">
+                    <h4>💪 Fortalezas Internas</h4>
+                    <p style="margin-bottom: 10px;">Ventajas competitivas de Filadelfia:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Competencia de destinos consolidados</li>
+                        <li>Dependencia del clima</li>
+                        <li>Crisis económicas que reducen turismo</li>
+                        <li>Falta de inversión pública sostenida</li>
+                        <li>Riesgo de deterioro por turismo masivo</li>
+                    </ul>
+                        <li>Cerro de las Cruces - mirador natural único</li>
+                        <li>Quebradas y Chorros de Gregorito</li>
+                        <li>Solo 48 km de Manizales</li>
+                        <li>Cultura cafetera auténtica</li>
+                        <li>Clima agradable (20°C promedio)</li>
+                        <li>Temporada de cometas (agosto)</li>
+                    </ul>
+                </div>
+                
+                <div class="foda-item oportunidades">
+                    <h4>🌟 Oportunidades Externas</h4>
+                    <p style="margin-bottom: 10px;">Factores favorables del entorno:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Demanda creciente de ecoturismo</li>
+                        <li>Interés por destinos auténticos</li>
+                        <li>Mercados cercanos (Manizales, Pereira)</li>
+                        <li>Eventos y tradiciones locales</li>
+                        <li>Turismo religioso (Cerro Corazón de Jesús)</li>
+                    </ul>
+                </div>
+                
+                <div class="foda-item debilidades">
+                    <h4>⚠️ Debilidades Internas</h4>
+                    <p style="margin-bottom: 10px;">Aspectos a mejorar:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
+                        <li>Señalización turística limitada</li>
+                        <li>Baja presencia digital</li>
+                        <li>Falta de capacitación especializada</li>
+                        <li>Infraestructura básica</li>
+                        <li>Estacionalidad marcada</li>
+                    </ul>
+                </div>
+                
+                <div class="foda-item amenazas">
+                    <h4>🚨 Amenazas Externas</h4>
+                    <p style="margin-bottom: 10px;">Riesgos del entorno:</p>
+                    <ul style="margin-top: 15px; line-height: 1.8;">
