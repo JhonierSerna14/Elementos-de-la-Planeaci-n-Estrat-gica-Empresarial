@@ -526,7 +526,8 @@
             margin-bottom: 20px;
         }
 
-        .cta button {
+        .cta button,
+        .cta-button {
             background: white;
             color: #667eea;
             border: none;
@@ -537,9 +538,13 @@
             transition: all 0.3s;
             font-weight: bold;
             margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 10px;
         }
 
-        .cta button:hover {
+        .cta button:hover,
+        .cta-button:hover {
             transform: scale(1.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
@@ -1403,6 +1408,9 @@
             Comienza hoy: define tu identidad, analiza tu situación, establece objetivos SMART,
             diseña estrategias, crea tu plan de acción y mide constantemente tus resultados.
         </p>
+        <a href="https://docs.google.com/document/d/1aYoShcYhgXZOUGKHi7coquU-TG4brC98fJvjKtzLUhQ/edit?usp=sharing"
+            class="cta-button">Puedes encontrar recursos valiosos aquí</a>
+
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             Volver al Inicio
         </button>
